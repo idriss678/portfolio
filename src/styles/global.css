@@ -1,0 +1,163 @@
+/* ─────────────────────────────────────────────
+   global.css  —  Reset · Variables · Layout
+   ───────────────────────────────────────────── */
+
+/* ── Reset ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Design tokens ── */
+:root {
+  --bg:     #060c18;
+  --nav:    #0a1422;
+  --card:   #0d1830;
+  --gold:   #c8a030;
+  --gold-l: #f0c050;
+  --gold-d: #9a7820;
+  --green:  #00c853;
+  --red:    #e53935;
+  --purple: #b040d8;
+  --text:   #e8eeff;
+  --dim:    #6878a8;
+  --border: rgba(255,255,255,0.07);
+}
+
+/* ── Base ── */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: "Barlow", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar              { width: 4px; height: 4px; }
+::-webkit-scrollbar-track        { background: transparent; }
+::-webkit-scrollbar-thumb        { background: rgba(200,160,48,.3); border-radius: 2px; }
+
+/* ────────────────────────────────────────────
+   KEYFRAMES  (globaux — utilisés partout)
+   ──────────────────────────────────────────── */
+@keyframes pgIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(120px) scale(.4) rotateY(180deg); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes flashBurst {
+  0%   { opacity: 1; transform: scale(.5); }
+  100% { opacity: 0; transform: scale(2); }
+}
+@keyframes sbuIn {
+  from { opacity: 0; transform: scale(.6); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes packShake {
+  0%,100% { transform: rotate(0); }
+  20%     { transform: rotate(-4deg) scale(1.05); }
+  40%     { transform: rotate(4deg)  scale(1.08); }
+  60%     { transform: rotate(-3deg) scale(1.06); }
+  80%     { transform: rotate(2deg)  scale(1.04); }
+}
+@keyframes pulseFade {
+  0%,100% { opacity: .6; }
+  50%     { opacity: 1;  }
+}
+@keyframes modalBounce {
+  from { opacity: 0; transform: scale(.5) translateY(30px); }
+  to   { opacity: 1; transform: none; }
+}
+
+body.app-visible { overflow: hidden; }
+
+#app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0;
+  transition: opacity .5s;
+  overflow: hidden;
+}
+#app.visible { opacity: 1; }
+
+/* ── Sidebar (PC) ── */
+.sidebar {
+  width: 68px;
+  background: var(--nav);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+  gap: 1px;
+  z-index: 10;
+  flex-shrink: 0;
+}
+.sb-logo           { margin-bottom: 12px; margin-top: 4px; }
+.sb-logo svg       { width: 38px; height: 38px; }
+.nav-item {
+  width: 52px; height: 52px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .18s;
+  color: var(--dim);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 7.5px; font-weight: 700;
+  letter-spacing: .5px; text-transform: uppercase;
+  border: none; background: transparent;
+}
+.nav-item:hover  { background: rgba(255,255,255,.06); color: var(--text); }
+.nav-item.active { background: rgba(200,160,48,.14);  color: var(--gold-l); }
+.nav-item svg    { width: 18px; height: 18px; }
+.sb-sep          { width: 32px; height: 1px; background: var(--border); margin: 2px 0; }
+
+.main        { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+.topbar {
+  height: 48px;
+  background: var(--nav);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  flex-shrink: 0;
+}
+.tb-club     { font-family: "Barlow Condensed", sans-serif; font-size: 18px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+.coins-wrap  { display: flex; align-items: center; gap: 6px; font-family: "Barlow Condensed", sans-serif; font-size: 16px; font-weight: 800; color: var(--gold-l); }
+.coin-icon   { width: 14px; height: 14px; background: radial-gradient(circle at 35% 35%, var(--gold-l), var(--gold-d)); border-radius: 50%; border: 1.5px solid var(--gold-l); }
+.tb-user     { font-size: 11px; color: var(--dim); font-family: "Barlow Condensed", sans-serif; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+.content     { flex: 1; overflow: hidden; position: relative; }
+.page        { position: absolute; inset: 0; overflow: auto; padding: 16px; display: none; }
+.page.active { display: block;  animation: pgIn .25s ease; }
+.page-flex        { display: none; gap: 0; }
+.page-flex.active { display: flex; animation: pgIn .25s ease; }
+
+.ptitle      { font-family: "Barlow Condensed", sans-serif; font-size: 26px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+.ptitle span { color: var(--gold); }
+@media (max-width: 768px) {
+  #app {
+    flex-direction: column-reverse !important; 
+  }
+  .sidebar {
+    width: 100% !important;
+    height: 60px !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    padding: 0 5px !important;
+    border-right: none !important;
+    border-top: 1px solid var(--border) !important;
+  }
+  .sb-logo, .sb-sep { display: none !important; }
+  .nav-item {
+    width: auto !important;
+    height: 100% !important;
+    flex: 1 !important;
+  }
+}

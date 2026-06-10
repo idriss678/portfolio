@@ -1,0 +1,123 @@
+/* ─────────────────────────────────────────────
+   PlayerCard.css  —  Cartes joueur
+   ───────────────────────────────────────────── */
+
+/* ── Base ── */
+.player-card {
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s, filter .22s;
+  user-select: none;
+}
+.player-card:hover         { transform: translateY(-5px) scale(1.07); filter: brightness(1.1); }
+.player-card.no-hover:hover { transform: none; filter: none; }
+
+/* ── Variantes de couleur ── */
+.player-card.gold {
+  background: linear-gradient(155deg,#f0d060 0%,#d8a830 18%,#c09020 35%,#e0b840 55%,#c09020 70%,#d8a030 85%,#f0c840 100%);
+  box-shadow: 0 4px 16px rgba(200,160,40,.4);
+}
+.player-card.gold:hover { box-shadow: 0 8px 26px rgba(200,160,40,.65); }
+
+.player-card.special {
+  background: linear-gradient(155deg,#d080f0 0%,#a040c0 18%,#7020a0 35%,#b060e0 55%,#8030b0 70%,#a050d0 85%,#c070f0 100%);
+  box-shadow: 0 4px 16px rgba(160,60,200,.5);
+}
+.player-card.special:hover { box-shadow: 0 8px 26px rgba(160,60,200,.75); }
+
+.player-card.red-special {
+  background: linear-gradient(155deg,#f07070 0%,#c83030 18%,#a01010 35%,#d04040 55%,#b02020 70%,#c83030 85%,#f05050 100%);
+  box-shadow: 0 4px 16px rgba(200,40,40,.5);
+}
+.player-card.red-special:hover { box-shadow: 0 8px 26px rgba(200,40,40,.75); }
+
+.player-card.silver {
+  background: linear-gradient(155deg,#d8e0e8 0%,#b0b8c8 25%,#8898a8 50%,#b0b8c8 75%,#d8e0e8 100%);
+  box-shadow: 0 3px 10px rgba(160,170,190,.3);
+}
+.player-card.bronze {
+  background: linear-gradient(155deg,#e8a870 0%,#c07838 18%,#985820 35%,#d08840 55%,#a06828 70%,#c07830 85%,#e09850 100%);
+  box-shadow: 0 4px 14px rgba(160,100,40,.4);
+}
+.player-card.future {
+  background: linear-gradient(155deg,#304060 0%,#1a2840 18%,#0d1828 35%,#253550 55%,#1a2838 70%,#253040 85%,#304055 100%);
+  box-shadow: 0 4px 12px rgba(30,50,80,.3);
+  opacity: .7;
+}
+.player-card.empty-slot {
+  background: rgba(255,255,255,.04);
+  border: 2px dashed rgba(255,255,255,.12);
+  cursor: default;
+}
+.player-card.empty-slot:hover { transform: none; filter: none; }
+.player-card.selected-sbc {
+  box-shadow: 0 0 0 3px var(--gold-l), 0 8px 24px rgba(240,192,80,.4);
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* ── Structure interne ── */
+.card-inner        { position: absolute; inset: 4px; display: flex; flex-direction: column; }
+.card-top-row      { display: flex; justify-content: space-between; align-items: flex-start; }
+.c-rating          { font-family: "Barlow Condensed", sans-serif; font-weight: 900; color: rgba(0,0,0,.75); line-height: 1; }
+.c-pos             { font-family: "Barlow Condensed", sans-serif; font-weight: 800; color: rgba(0,0,0,.65); letter-spacing: .3px; }
+.c-flag            { line-height: 1; }
+.card-img          { flex: 1; display: flex; align-items: center; justify-content: center; }
+.c-name            { font-family: "Barlow Condensed", sans-serif; font-weight: 800; text-align: center; color: rgba(0,0,0,.75); text-transform: uppercase; letter-spacing: .2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-divider      { background: rgba(0,0,0,.18); flex-shrink: 0; }
+.card-stats        { display: grid; grid-template-columns: repeat(3,1fr); }
+.c-stat            { display: flex; flex-direction: column; align-items: center; }
+.c-stat .sv        { font-family: "Barlow Condensed", sans-serif; font-weight: 900; color: rgba(0,0,0,.78); line-height: 1; }
+.c-stat .sl        { font-family: "Barlow Condensed", sans-serif; font-weight: 700; color: rgba(0,0,0,.6); text-transform: uppercase; }
+
+/* ── Taille XS ── */
+.pc-xs             { width: 66px; height: 92px; }
+.pc-xs .card-top-row { height: 18px; }
+.pc-xs .c-rating   { font-size: 14px; }
+.pc-xs .c-pos      { font-size: 6.5px; }
+.pc-xs .c-flag     { font-size: 9px; }
+.pc-xs .card-img svg { width: 28px; height: 28px; }
+.pc-xs .c-name     { font-size: 6px; }
+.pc-xs .card-divider { height: 1px; margin: 1px 0; }
+.pc-xs .c-stat .sv { font-size: 7.5px; }
+.pc-xs .c-stat .sl { font-size: 4.5px; }
+.pc-xs .c-stat     { padding: 1px 0; }
+
+/* ── Taille SM ── */
+.pc-sm             { width: 80px; height: 112px; }
+.pc-sm .card-top-row { height: 22px; }
+.pc-sm .c-rating   { font-size: 17px; }
+.pc-sm .c-pos      { font-size: 8px; }
+.pc-sm .c-flag     { font-size: 11px; }
+.pc-sm .card-img svg { width: 34px; height: 34px; }
+.pc-sm .c-name     { font-size: 7px; }
+.pc-sm .card-divider { height: 1px; margin: 2px 0; }
+.pc-sm .c-stat .sv { font-size: 8.5px; }
+.pc-sm .c-stat .sl { font-size: 5px; }
+.pc-sm .c-stat     { padding: 1px 0; }
+
+/* ── Taille MD ── */
+.pc-md             { width: 190px; height: 265px; }
+.pc-md .card-top-row { height: 50px; }
+.pc-md .c-rating   { font-size: 40px; }
+.pc-md .c-pos      { font-size: 17px; }
+.pc-md .c-flag     { font-size: 20px; }
+.pc-md .card-img svg { width: 82px; height: 82px; }
+.pc-md .c-name     { font-size: 17px; }
+.pc-md .card-divider { height: 3px; margin: 3px 0; }
+.pc-md .c-stat .sv { font-size: 20px; }
+.pc-md .c-stat .sl { font-size: 12px; }
+.pc-md .c-stat     { padding: 2px 0; }
+
+/* ── Taille LG ── */
+.pc-lg             { width: 230px; height: 320px; }
+.pc-lg .card-top-row { height: 60px; }
+.pc-lg .c-rating   { font-size: 50px; }
+.pc-lg .c-pos      { font-size: 21px; }
+.pc-lg .c-flag     { font-size: 24px; }
+.pc-lg .card-img svg { width: 100px; height: 100px; }
+.pc-lg .c-name     { font-size: 21px; }
+.pc-lg .card-divider { height: 3px; margin: 5px 0; }
+.pc-lg .c-stat .sv { font-size: 24px; }
+.pc-lg .c-stat .sl { font-size: 14px; }
+.pc-lg .c-stat     { padding: 3px 0; }

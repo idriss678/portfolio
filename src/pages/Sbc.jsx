@@ -6,7 +6,7 @@ import { useState } from 'react'
 import PlayerCard from '../components/PlayerCard.jsx'
 import { projects, idriss_pro } from '../data/projectsData.js'
 
-const SBC_TOTAL   = 7
+const SBC_TOTAL   = 8
 const PROJECT_IDS = Object.keys(projects) // ordre naturel de l'objet
 
 /**

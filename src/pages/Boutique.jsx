@@ -7,7 +7,7 @@ import { projects } from '../data/projectsData.js'
 
 const FEATURED_ID    = 'syf'
 const FEATURED_PRICE = 45_000
-const MORE_IDS       = ['tardis', 'alice', 'dripday', 'hj', 'nb', 'piscine']
+const MORE_IDS       = ['tardis', 'alice', 'dripday', 'hj', 'nb', 'cvrie', 'piscine']
 
 /**
  * @param {number}   coins

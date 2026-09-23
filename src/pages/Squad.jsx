@@ -9,10 +9,7 @@ import { pitchSlots, projects } from '../data/projectsData.js'
  */
 export default function Squad({ onOpenModal }) {
   return (
-    <div
-      className="page-flex active"
-      style={{ flexDirection: 'column', padding: '12px' }}
-    >
+    <div className="page-flex active equipe-page">
       {/* ── Header ── */}
       <div className="eq-header">
         <div className="ptitle" style={{ marginBottom: 0 }}>
@@ -26,70 +23,72 @@ export default function Squad({ onOpenModal }) {
       </div>
 
       {/* ── Terrain ── */}
-      <div className="pitch">
-        {/* Lignes décoratives */}
-        <div className="pitch-line-h" />
-        <div className="pitch-circle" />
-        <div className="pitch-box-top" />
-        <div className="pitch-box-bot" />
+      <div className="eq-body">
+        <div className="pitch">
+          {/* Lignes décoratives */}
+          <div className="pitch-line-h" />
+          <div className="pitch-circle" />
+          <div className="pitch-box-top" />
+          <div className="pitch-box-bot" />
 
-        {/* Slots joueurs */}
-        {pitchSlots.map((slot, idx) => {
-          const project = slot.proj ? projects[slot.proj] : null
+          {/* Slots joueurs */}
+          {pitchSlots.map((slot, idx) => {
+            const project = slot.proj ? projects[slot.proj] : null
 
-          return (
-            <div
-              key={idx}
-              className="pitch-slot"
-              style={{ left: slot.left, top: slot.top }}
-            >
-              {project ? (
-                <>
-                  <PlayerCard
-                    data={project}
-                    sizeClass="pc-sm"
-                    onClick={() => onOpenModal(slot.proj)}
-                  />
-                  <div className="slot-label">{slot.label}</div>
-                  <div className="chem-pip">
-                    <span /><span /><span />
-                  </div>
-                </>
-              ) : (
-                <>
-                  {/* Slot vide */}
-                  <div className="player-card empty-slot pc-sm">
-                    <div
-                      className="card-inner"
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
-                        gap: '2px',
-                      }}
-                    >
-                      <span style={{ fontSize: '18px', color: 'rgba(255,255,255,0.1)' }}>
-                        +
-                      </span>
-                      <span
+            return (
+              <div
+                key={idx}
+                className="pitch-slot"
+                style={{ left: slot.left, top: slot.top }}
+              >
+                {project ? (
+                  <>
+                    <PlayerCard
+                      data={project}
+                      sizeClass="pc-sm"
+                      onClick={() => onOpenModal(slot.proj)}
+                    />
+                    <div className="slot-label">{slot.label}</div>
+                    <div className="chem-pip">
+                      <span /><span /><span />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* Slot vide */}
+                    <div className="player-card empty-slot pc-sm">
+                      <div
+                        className="card-inner"
                         style={{
-                          fontFamily: 'Barlow Condensed',
-                          fontSize: '7px',
-                          color: 'rgba(255,255,255,0.15)',
-                          textTransform: 'uppercase',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexDirection: 'column',
+                          gap: '2px',
                         }}
                       >
-                        {slot.label}
-                      </span>
+                        <span style={{ fontSize: '18px', color: 'rgba(255,255,255,0.1)' }}>
+                          +
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: 'Barlow Condensed',
+                            fontSize: '7px',
+                            color: 'rgba(255,255,255,0.15)',
+                            textTransform: 'uppercase',
+                          }}
+                        >
+                          {slot.label}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="slot-label">{slot.label}</div>
-                </>
-              )}
-            </div>
-          )
-        })}
+                    <div className="slot-label">{slot.label}</div>
+                  </>
+                )}
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

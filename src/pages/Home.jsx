@@ -5,21 +5,30 @@ import { useState, useEffect } from 'react'
 
 // ── Données statiques extraites du HTML original ──────────────
 const SEASON_SKILLS = [
-  { label: 'Python / ML',   value: 88 },
-  { label: 'Cybersécurité', value: 85 },
-  { label: 'Data / SQL',    value: 82 },
-  { label: 'JavaScript',    value: 75 },
-  { label: 'NLP / spaCy',   value: 80 },
+  { label: 'Python / ML',        value: 88 },
+  { label: 'Cybersécurité',      value: 85 },
+  { label: 'Data / SQL',         value: 82 },
+  { label: 'Deep Learning / CV', value: 78 },
+  { label: 'JavaScript',         value: 75 },
+  { label: 'NLP / spaCy',        value: 80 },
+  { label: 'Clustering',         value: 76 },
+]
+
+const OBJECTIFS = [
+  { date: 'En cours',      title: 'Recherche de stage',   desc: 'Stage 1 à 2 mois en Data / IA ou Cybersécurité.' },
+  { date: '2026',          title: 'LLM Engineer',         desc: 'Projet complet avec fine-tuning ou RAG.' },
+  { date: '2026 – 2027',   title: 'Cloud Dev',            desc: 'Déploiement d’une app sur AWS ou GCP.' },
 ]
 
 const STAT_CHIPS = [
-  { v: '7',  l: 'Projets'  },
+  { v: '8',  l: 'Projets'  },
   { v: '6+', l: 'Langages' },
   { v: '83', l: 'OVR'      },
   { v: 'B2', l: 'Anglais'  },
 ]
 
 const ACTIVITIES = [
+  { color: 'var(--gold-l)', text: 'CVRIE — IA médicale : classification d’images & clustering', date: '2026' },
   { color: 'var(--purple)', text: 'Save Your Friends — Bot NLP anti-harcèlement (Mistral LLM)',   date: '2026' },
   { color: 'var(--gold)',   text: 'TARDIS — Prédiction retards SNCF, Dashboard Streamlit ML',     date: '2026' },
   { color: '#7080e8',       text: 'Alice in Wonderland — Moteur NLP, similarité cosinus',          date: '2026' },
@@ -83,6 +92,17 @@ export default function Home() {
               </div>
             </div>
           ))}
+
+          <h3 style={{ margin: '16px 0 10px' }}>Prochains Objectifs</h3>
+          <div className="timeline">
+            {OBJECTIFS.map(o => (
+              <div key={o.title} className="tl-item">
+                <div className="tl-date">{o.date}</div>
+                <div className="tl-title">{o.title}</div>
+                <div className="tl-desc">{o.desc}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* ── Activité récente ── */}

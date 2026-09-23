@@ -7,10 +7,12 @@
 /* ════════════════════════════════
    HOME
    ════════════════════════════════ */
-.home-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Les cases s'étirent pour combler le vide */
-  gap: 16px; 
+.home-grid {
+  display: grid;
+  /* 3 colonnes fixes (auto-fit cassait les grid-column/row manuels ci-dessous
+     sur les grands écrans, en générant des colonnes vides en plus) */
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 16px;
   width: 100%;
 }.hcard     { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
 .hcard h3  { font-family: "Barlow Condensed", sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--dim); margin-bottom: 9px; }
@@ -40,6 +42,7 @@
 .act-text           { font-size: 12px; color: var(--text); }
 .act-date           { font-size: 10px; color: var(--dim); margin-left: auto; white-space: nowrap; }
 
+.equipe-page    { height: 100%; display: flex; flex-direction: column; padding: 12px; }
 .eq-header      { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-shrink: 0; }
 .eq-meta        { display: flex; gap: 14px; align-items: center; }
 .formation-badge { background: rgba(197,160,48,.12); border: 1px solid rgba(197,160,48,.25); border-radius: 4px; padding: 2px 8px; font-family: "Barlow Condensed", sans-serif; font-size: 13px; font-weight: 800; color: var(--gold-l); letter-spacing: 1px; }
@@ -48,18 +51,36 @@
 .rating-info         { font-family: "Barlow Condensed", sans-serif; font-size: 13px; color: var(--dim); }
 .rating-info strong  { color: var(--gold-l); }
 
+/* Zone qui absorbe tout l'espace vertical restant et centre le terrain */
+.eq-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;
+}
+
 .pitch {
-  position: relative; 
+  position: relative;
   border-radius: 8px;
   border: 2px solid rgba(255,255,255,.1);
-  overflow: hidden; 
+  overflow: hidden;
   width: 100%;
-  max-width: 950px;   
-  height: 640px;    
-  margin: 10px auto;  
+  max-width: 950px;                          /* repli si container queries indisponibles */
+  aspect-ratio: 1.484;
+  margin: 0 auto;
   background:
     repeating-linear-gradient(0deg, rgba(0,0,0,.04) 0, rgba(0,0,0,.04) 38px, transparent 38px, transparent 76px),
     linear-gradient(180deg, #185a1e 0%, #103f14 50%, #185a1e 100%) !important;
+}
+/* Object-fit "contain" : le terrain remplit tout l'espace dispo (largeur OU hauteur,
+   selon ce qui est le plus contraignant) sans jamais déformer son ratio de terrain. */
+@supports (container-type: size) {
+  .pitch {
+    width: min(100%, calc(100cqh * 1.484));
+    max-width: 2200px; /* garde-fou pour très grands écrans, ne devrait jamais être atteint */
+  }
 }
 .pitch-line-h  { position: absolute; top: 50%; left: 5%; right: 5%; height: 1px; background: rgba(255,255,255,.2); pointer-events: none; }
 .pitch-circle  { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 110px; height: 110px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; pointer-events: none; }
@@ -72,9 +93,16 @@
 .chem-pip span { width: 5px; height: 3px; border-radius: 1px; background: var(--green); opacity: .8; }
 
 .pitch-slot .player-card {
-  width: 80px !important;
-  height: 115px !important;
+  width: 92px !important;
+  height: 129px !important;
 }
+.pitch-slot .c-rating      { font-size: 19px; }
+.pitch-slot .c-pos         { font-size: 9px; }
+.pitch-slot .c-flag        { font-size: 12px; }
+.pitch-slot .card-img svg  { width: 38px; height: 38px; }
+.pitch-slot .c-name        { font-size: 8px; }
+.pitch-slot .c-stat .sv    { font-size: 9.5px; }
+.pitch-slot .c-stat .sl    { font-size: 5.5px; }
 /* ════════════════════════════════
    SBC PAGE
    ════════════════════════════════ */
@@ -94,7 +122,7 @@
     radial-gradient(ellipse at center, #0f1e38 0%, #080e1c 100%);
 }
 .sbc-slots       { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-.sbc-slots-inner { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; padding: 20px; max-width: 540px; }
+.sbc-slots-inner { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; padding: 20px; max-width: 640px; }
 
 .sbc-slot {
   width: 90px; height: 126px; border-radius: 6px; position: relative;
@@ -332,9 +360,12 @@
   }
 
   /* Équipe / Terrain Mobile : On crée un défilement horizontal fluide */
-  .page:has(.pitch) {
+  .equipe-page {
     overflow-x: auto !important;
     padding: 10px !important;
+  }
+  .eq-body {
+    justify-content: flex-start !important;
   }
   .eq-header {
     flex-direction: column !important;

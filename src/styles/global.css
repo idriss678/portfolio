@@ -26,7 +26,7 @@ html, body {
   height: 100%;
   overflow: hidden;
   font-family: "Barlow", sans-serif;
-  background: var(--bg);
+  background: radial-gradient(ellipse at top, #0d1a30 0%, var(--bg) 55%, #030710 100%);
   color: var(--text);
 }
 
@@ -86,7 +86,7 @@ body.app-visible { overflow: hidden; }
 /* ── Sidebar (PC) ── */
 .sidebar {
   width: 68px;
-  background: var(--nav);
+  background: linear-gradient(180deg, #0f1d32 0%, var(--nav) 45%, #081120 100%);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -120,8 +120,9 @@ body.app-visible { overflow: hidden; }
 .main        { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
 .topbar {
   height: 48px;
-  background: var(--nav);
+  background: linear-gradient(180deg, #101f36 0%, var(--nav) 100%);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
   display: flex;
   align-items: center;
   justify-content: space-between;

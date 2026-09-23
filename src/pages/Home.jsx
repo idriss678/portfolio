@@ -15,7 +15,7 @@ const SEASON_SKILLS = [
 ]
 
 const OBJECTIFS = [
-  { date: 'En cours',      title: 'Recherche de stage',   desc: 'Stage 1 à 2 mois en Data / IA ou Cybersécurité.' },
+  { date: 'En cours',      title: 'Recherche de stage',   desc: 'Stage de 4 mois en Data / IA ou Cybersécurité.' },
   { date: '2026',          title: 'LLM Engineer',         desc: 'Projet complet avec fine-tuning ou RAG.' },
   { date: '2026 – 2027',   title: 'Cloud Dev',            desc: 'Déploiement d’une app sur AWS ou GCP.' },
 ]
@@ -60,7 +60,7 @@ export default function Home() {
             <strong style={{ color: 'var(--text)' }}>Epitech</strong>, orienté vers
             l'ingénierie des données et l'Intelligence Artificielle. Passionné par les
             modèles prédictifs, la cybersécurité et la conception de produits.
-            Recherche stage 1–2 mois.
+            Recherche stage de 4 mois.
           </p>
           <div className="stat-chips">
             {STAT_CHIPS.map(chip => (

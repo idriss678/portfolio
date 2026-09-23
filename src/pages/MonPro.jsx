@@ -12,7 +12,7 @@ const BIO_ITEMS = [
   { l: 'Pied fort',     v: 'Python' },
   { l: 'Localisation',  v: 'Marseille' },
   { l: 'Contact',       v: 'idriss.abdellaoui@epitech.eu', small: true },
-  { l: 'Disponibilité', v: 'Stage 1–2 mois', green: true },
+  { l: 'Disponibilité', v: 'Stage 4 mois', green: true },
   { l: 'Note',          v: '83 OVR', gold: true },
 ]
 

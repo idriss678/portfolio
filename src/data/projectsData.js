@@ -152,7 +152,7 @@ export const projects = {
     tags: ['Python','Scikit-learn','Pandas','Clustering','Classification Médicale'],
     stats:    [{ v:87,l:'PY' },{ v:84,l:'ML' },{ v:82,l:'CV' },{ v:80,l:'CLU' },{ v:83,l:'DATA' },{ v:85,l:'ANL' }],
     detStats: [{ v:87,l:'Python' },{ v:84,l:'Machine Learning' },{ v:82,l:'Vision par ordinateur' },{ v:80,l:'Clustering' },{ v:83,l:'Prétraitement données' },{ v:85,l:'Analyse / Notebooks' }],
-    pitch: { left:'38%', top:'30%' },
+    pitch: { left:'50%', top:'30%' },
     pitchLabel: 'CAM',
     github: 'https://github.com/idriss678',
   },
@@ -200,7 +200,7 @@ export const pitchSlots = [
   { left:'38%', top:'42%', label:'CM',  proj:'alice'   },
   { left:'62%', top:'42%', label:'CM',  proj:'nb'      },
   { left:'85%', top:'42%', label:'RM',  proj: null     },
-  { left:'38%', top:'30%', label:'CAM', proj:'cvrie'   },
+  { left:'50%', top:'30%', label:'CAM', proj:'cvrie'   },
   { left:'50%', top:'18%', label:'ST',  proj:'syf'     },
 ];
 

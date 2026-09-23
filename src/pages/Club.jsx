@@ -10,6 +10,12 @@ const TIMELINE = [
     desc:  "Baccalauréat général, bases scientifiques et découverte de l'informatique.",
   },
   {
+    date:  'Été 2025',
+    title: 'Stage — Site LOGIRAZ',
+    desc:  "Développement du site vitrine d'une entreprise de transport et logistique (Auvergne-Rhône-Alpes) : présentation des services, de la flotte et des entrepôts.",
+    link:  'https://idriss678.github.io/logiraz-preview/',
+  },
+  {
     date:  'Sept 2025',
     title: 'La Piscine Epitech',
     desc:  "Marathon d'apprentissage 10–15h/jour. Maîtrise de la POO, fichiers complexes, logique algorithmique.",
@@ -56,10 +62,21 @@ export default function Club() {
           <h3>Parcours</h3>
           <div className="timeline">
             {TIMELINE.map(t => (
-              <div key={t.date} className="tl-item">
+              <div key={t.title} className="tl-item">
                 <div className="tl-date">{t.date}</div>
                 <div className="tl-title">{t.title}</div>
                 <div className="tl-desc">{t.desc}</div>
+                {t.link && (
+                  <a
+                    className="modal-link"
+                    href={t.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ marginTop: '6px' }}
+                  >
+                    Voir le site →
+                  </a>
+                )}
               </div>
             ))}
           </div>

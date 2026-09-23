@@ -70,9 +70,11 @@
   max-width: 950px;                          /* repli si container queries indisponibles */
   aspect-ratio: 1.484;
   margin: 0 auto;
+  box-shadow: inset 0 0 90px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.35);
   background:
-    repeating-linear-gradient(0deg, rgba(0,0,0,.04) 0, rgba(0,0,0,.04) 38px, transparent 38px, transparent 76px),
-    linear-gradient(180deg, #185a1e 0%, #103f14 50%, #185a1e 100%) !important;
+    radial-gradient(ellipse at 50% 15%, rgba(120,255,140,.10) 0%, transparent 55%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.06) 0, rgba(0,0,0,.06) 38px, transparent 38px, transparent 76px),
+    linear-gradient(160deg, #1f7a28 0%, #14591c 30%, #0d3a12 60%, #1a6a22 85%, #0f4416 100%) !important;
 }
 /* Object-fit "contain" : le terrain remplit tout l'espace dispo (largeur OU hauteur,
    selon ce qui est le plus contraignant) sans jamais déformer son ratio de terrain. */

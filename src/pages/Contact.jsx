@@ -18,7 +18,7 @@ const CONTACT_ITEMS = [
   },
   {
     label:   'Recherche',
-    value:   'Stage 1 à 2 mois',
+    value:   'Stage de 4 mois',
     style:   { color: 'var(--green)', fontWeight: 600 },
   },
 ]

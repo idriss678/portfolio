@@ -15,7 +15,7 @@ export default function Topbar({ coins }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <div className="tb-club">
           IDRISS FC{' '}
-          <span style={{ color: 'var(--gold)' }}>26</span>
+          <span style={{ color: 'var(--gold)' }}>27</span>
         </div>
         <span style={{ fontSize: '10px', color: 'var(--dim)' }}>
           • Est. Marseille 2025
